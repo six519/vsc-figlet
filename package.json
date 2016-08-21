@@ -1,0 +1,29 @@
+{
+    "name": "vsc-figlet",
+    "displayName": "VSC Figlet",
+    "description": "ASCII Art Generator",
+    "version": "0.0.1",
+    "publisher": "ferdinandsilva",
+    "engines": {
+        "vscode": "^1.0.0"
+    },
+    "categories": [
+        "Other"
+    ],
+    "activationEvents": [
+        "onCommand:extension.figlet"
+    ],
+    "main": "./extension",
+    "contributes": {
+        "commands": [{
+            "command": "extension.figlet",
+            "title": "VSC Figlet"
+        }]
+    },
+    "scripts": {
+        "postinstall": "node ./node_modules/vscode/bin/install"
+    },
+    "devDependencies": {
+        "vscode": "^0.11.0"
+    }
+}
