@@ -70,9 +70,9 @@ function activate(context) {
                     if(fnt) {
                         var options = {
                             host: "ferdinandsilva.com",
-                            path: "/figlet/?text=" + escape(txt) + "&font=" + escape(fnt)
+                            path: `/figlet/?text=${escape(txt)}&font=${escape(fnt)}`
                         };
-
+                        console.log('TESTING TESTING');
                         callback = function(response) {
                             var str = '';
 
