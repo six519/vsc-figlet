@@ -1,4 +1,4 @@
-# vsc-figlet
+# VSC Figlet
 
 An ASCII Art Generator For Visual Studio Code
 
