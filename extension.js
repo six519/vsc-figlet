@@ -63,7 +63,8 @@ var FIGLET_FONTS = [
 function activate(context) {
 
     var disposable = vscode.commands.registerCommand('extension.figlet', function () {
-
+        var vscFigletOutputChannel = vscode.window.createOutputChannel("VSC Figlet");
+        
         vscode.window.showInputBox({prompt: "Please enter text to convert"}).then(function(txt){
             if(txt) {
                 vscode.window.showQuickPick(FIGLET_FONTS).then(function(fnt){
@@ -72,7 +73,7 @@ function activate(context) {
                             host: "ferdinandsilva.com",
                             path: `/figlet/?text=${escape(txt)}&font=${escape(fnt)}`
                         };
-                        console.log('TESTING TESTING');
+
                         callback = function(response) {
                             var str = '';
 
@@ -81,12 +82,18 @@ function activate(context) {
                             });
 
                             response.on('end', function () {
-                                var vscFigletOutputChannel = vscode.window.createOutputChannel("VSC Figlet");
                                 vscFigletOutputChannel.show();
                                 vscFigletOutputChannel.append(str);
                             });
                         }
-                        http.request(options, callback).end();
+                        var req = http.request(options, callback);
+
+                        req.on('error', function(e){
+                            vscFigletOutputChannel.show();
+                            vscFigletOutputChannel.append(`The following error occurred: ${e}`);
+                        });
+
+                        req.end();
                     }
                 });
             }
