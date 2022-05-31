@@ -1,5 +1,5 @@
 var vscode = require('vscode');
-var http = require('http');
+var https = require('https');
 var FIGLET_FONTS = [
     "3-d",
     "3x5",
@@ -177,7 +177,7 @@ function activate(context) {
                                 vscFigletOutputChannel.append(str);
                             });
                         }
-                        var req = http.request(options, callback);
+                        var req = https.request(options, callback);
 
                         req.on('error', function(e){
                             vscFigletOutputChannel.show();

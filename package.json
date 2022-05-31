@@ -2,10 +2,10 @@
     "name": "vsc-figlet",
     "displayName": "VSC Figlet",
     "description": "ASCII Art Generator",
-    "version": "0.0.8",
+    "version": "0.0.9",
     "publisher": "ferdinandsilva",
     "engines": {
-        "vscode": "^1.0.0"
+        "vscode": "^1.67.0"
     },
     "icon": "icon.png",
     "categories": [
